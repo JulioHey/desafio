@@ -9,7 +9,7 @@ public class OptionalIntegerValidator implements ConstraintValidator<ValidAno, O
 
     @Override
     public boolean isValid(Optional<Integer> value, ConstraintValidatorContext context) {
-        if (value.isEmpty()) return true; // Allow null values
+        if (value == null || value.isEmpty()) return true; // Allow null values
         int ano = value.get();
         return ano >= 1886 && ano <= 2025;
     }

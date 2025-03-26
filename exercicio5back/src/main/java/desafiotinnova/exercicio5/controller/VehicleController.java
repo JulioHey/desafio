@@ -19,9 +19,13 @@ import desafiotinnova.exercicio5.model.Brand;
 import desafiotinnova.exercicio5.model.Vehicle;
 import desafiotinnova.exercicio5.service.VeiculeService;
 import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("/veiculos")
+@CrossOrigin(origins = "*") 
 public class VehicleController {
 
     @Autowired
@@ -130,4 +134,23 @@ public class VehicleController {
         ModelMapperConfig modelMapperConfig = new ModelMapperConfig();
         return ResponseEntity.ok(modelMapperConfig.modelMapper().map(updatedVehicle, VeiculeDTO.class));
     }
+
+    @GetMapping("/last-week")
+    public ResponseEntity<List<Vehicle>> getVehiclesLastWeek() {
+        List<Vehicle> vehicles = veiculeService.getFilteredVehiclesLastWeek();
+        return ResponseEntity.ok(vehicles);
+    }
+
+    @GetMapping("/decade/{decada}")
+    public ResponseEntity<List<Vehicle>> getVehiclesByDecade(@PathVariable int decada) {
+        List<Vehicle> vehicles = veiculeService.getFilteredVehiclesByDecade(decada);
+        return ResponseEntity.ok(vehicles);
+    }
+
+    @GetMapping("/not-sold")
+    public ResponseEntity<List<Vehicle>>  getNotSold() {
+        List<Vehicle> vehicles = veiculeService.getNotSold();
+        return ResponseEntity.ok(vehicles);
+    }
+    
 }

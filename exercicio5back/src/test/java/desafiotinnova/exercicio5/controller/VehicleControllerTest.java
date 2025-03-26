@@ -317,4 +317,31 @@ class VehicleControllerTest {
                 .andExpect(jsonPath("$.marca").value("Deve ser um nome de marca válido"));
     }
 
+    @Test
+    void testGetVehiclesLastWeek() throws Exception {
+        List<Vehicle> vehicles = List.of(new Vehicle(), new Vehicle());
+        when(veiculeService.getFilteredVehiclesLastWeek()).thenReturn(vehicles);
+
+        mockMvc.perform(get("/veiculos/last-week"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    void testGetVehiclesByDecade() throws Exception {
+        List<Vehicle> vehicles = List.of(new Vehicle());
+        when(veiculeService.getFilteredVehiclesByDecade(1980)).thenReturn(vehicles);
+
+        mockMvc.perform(get("/veiculos/decade/1980"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    void testGetNotSold() throws Exception {
+        List<Vehicle> vehicles = List.of(new Vehicle());
+        when(veiculeService.getNotSold()).thenReturn(vehicles);
+
+        mockMvc.perform(get("/veiculos/not-sold"))
+                .andExpect(status().isOk());
+    }
+
 }

@@ -25,11 +25,11 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<Map<String, String>> handleGeneralException(Exception ex) {
-        Map<String, String> errorResponse = new HashMap<>();
-        System.out.println("CARALHO" + ex.getMessage());
-        errorResponse.put("Error:", "Unxpected error occurred");
-        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+    // @ExceptionHandler(Exception.class)
+    // public ResponseEntity<Map<String, String>> handleGeneralException(Exception ex) {
+    //     Map<String, String> errorResponse = new HashMap<>();
+    //     System.out.println("CARALHO" + ex.getMessage());
+    //     errorResponse.put("Error:", "Unxpected error occurred");
+    //     return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    // }
 }
