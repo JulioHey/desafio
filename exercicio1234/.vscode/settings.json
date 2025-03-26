@@ -1,0 +1,9 @@
+{
+    "java.project.sourcePaths": [
+        "src/main/java",
+        "src/main/kotlin"
+    ],
+    "java.project.outputPath": "build/classes/java/main",
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.configuration.updateBuildConfiguration": "interactive"
+}
